@@ -1,16 +1,21 @@
-const BASE_URL = "https://superheroapi.com/api/fabaedea9453c95dc5080c8e557efa1a"; // <-- mudar aqui para sua API 
- 
-// Função para listar todos os itens
-async function getItems() {
-  const res = await fetch(`${BASE_URL}items`); // end point que ira utilizar
+// src/services/ApiSuperHero.js
+
+const ACCESS_TOKEN = "fabaedea9453c95dc5080c8e557efa1a";
+const BASE_URL = `https://www.superheroapi.com/api.php/${ACCESS_TOKEN}`;
+
+/**
+ * 🔹 Busca heróis pelo nome
+ */
+async function searchByName(name) {
+  const res = await fetch(`${BASE_URL}/search/${name}`);
+  if (!res.ok) throw new Error("Erro ao buscar herói por nome");
+  
   const data = await res.json();
-  return data;
+  if (data.response === "success") {
+    return data.results;
+  } else {
+    return [];
+  }
 }
- 
-// Função para pegar detalhes de um item
-async function getItemById(id) {
-  const res = await fetch(`${BASE_URL}items/${id}`);
-  return await res.json();
-}
- 
-export default { getItems, getItemById };
+
+export default { searchByName };
