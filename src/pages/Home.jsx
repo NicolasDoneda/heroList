@@ -19,13 +19,13 @@ export default function Home() {
       const results = await ApiSuperHero.searchByName(name);
 
       if (results.length === 0) {
-        setError("Nenhum herói encontrado 😢");
+        setError("Nenhum herói encontrado");
       } else {
         setHeroes(results);
       }
     } catch (err) {
       console.error(err);
-      setError("Erro ao buscar heróis 😢");
+      setError("Erro ao buscar heróis");
     } finally {
       setLoading(false);
     }
@@ -33,7 +33,7 @@ export default function Home() {
 
   return (
     <div style={styles.container}>
-      <h1 style={styles.title}>🦸 Super-Heróis</h1>
+      <h1 style={styles.title}>🕸️Super-Heróis</h1>
 
       {/* Input de busca */}
       <div style={styles.searchContainer}>
@@ -45,7 +45,7 @@ export default function Home() {
           style={styles.input}
         />
         <button onClick={handleSearch} style={styles.button}>
-          🔍 Buscar
+          Buscar
         </button>
       </div>
 
@@ -66,9 +66,9 @@ export default function Home() {
             </div>
             <h2 style={styles.name}>{hero.name}</h2>
             <div style={styles.stats}>
-              <p><strong>🧠 Inteligência:</strong> {hero.powerstats?.intelligence}</p>
-              <p><strong>💪 Força:</strong> {hero.powerstats?.strength}</p>
-              <p><strong>⚡ Velocidade:</strong> {hero.powerstats?.speed}</p>
+              <p><strong>Inteligência:</strong> {hero.powerstats?.intelligence}</p>
+              <p><strong>Força:</strong> {hero.powerstats?.strength}</p>
+              <p><strong>Velocidade:</strong> {hero.powerstats?.speed}</p>
             </div>
           </div>
         ))}
