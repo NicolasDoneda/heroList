@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ApiSuperHero from "../services/ApiSuperHero";
+import ApiSuperHero from "../components/heroList";
 
 export default function Home() {
   const [search, setSearch] = useState("");
